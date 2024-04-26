@@ -4,13 +4,18 @@
 
         <style>
             body {
-                font-family: monospace;
-
                 .dateHolders {
+                    margin: auto;
+                    width: 50%;
+
+                    padding: 100px;
+
                     .label {
+                        text-align: right;
                         font-size: 25px;
                     }
                     .number {
+                        text-align: right;
                         font-size: 42px;
                     }
                 }
@@ -93,9 +98,20 @@
         <p>What do I still want to, and how much time do I have for that?*</p>
 
         <div class="dateHolders">
-            <div class="daysLeft"><span class="label">&nbsp;Days to live:</span> <span class="number" id="daysLeftNumber"></span></div>
-            <div class="weeksLeft"><span class="label">Weeks to live:</span> <span class="number" id="weeksLeftNumber"></span></div>
-            <div class="yearsLeft"><span class="label">Years to live:</span> <span class="number" id="yearsLeftNumber"></span></div>
+            <table>
+                <tr>
+                    <td class="label">Days to live:</td>
+                    <td class="number" id="daysLeftNumber"></td>
+                </tr>
+                <tr>
+                    <td class="label">Weeks to live:</td>
+                    <td class="number" id="weeksLeftNumber"></td>
+                </tr>
+                <tr>
+                    <td class="label">Years to live:</td>
+                    <td class="number" id="yearsLeftNumber"></td>
+                </tr>
+            </table>
         </div>
 
         <p>* other lives not included</p>
