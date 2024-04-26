@@ -2,6 +2,21 @@
     <head>
         <title>Daniel Dornhardt's Life Clock</title>
 
+        <style>
+            body {
+                font-family: monospace;
+
+                .dateHolders {
+                    .label {
+                        font-size: 25px;
+                    }
+                    .number {
+                        font-size: 42px;
+                    }
+                }
+            }
+        </style>
+
         <script type="text/javascript">
 
             /**
@@ -47,15 +62,15 @@
                 const weeksLeft = Math.round(daysLeft / 7)
                 const yearsLeft = yearOfDeathFullYear - now.getFullYear()
 
-                console.log({
-                    timeLeftMs,
-                    secondsLeft,
-                    minutesLeft,
-                    hoursLeft,
-                    daysLeft,
-                    weeksLeft,
-                    yearsLeft
-                })
+                // console.log({
+                //     timeLeftMs,
+                //     secondsLeft,
+                //     minutesLeft,
+                //     hoursLeft,
+                //     daysLeft,
+                //     weeksLeft,
+                //     yearsLeft
+                // })
 
                 const daysLeftElement = document.getElementById('daysLeftNumber')
                 const weeksLeftElement = document.getElementById('weeksLeftNumber')
@@ -77,12 +92,10 @@
     <body>
         <p>What do I still want to, and how much time do I have for that?*</p>
 
-        <h2>Time Left: ~2000 Weeks?</h2>
-
         <div class="dateHolders">
-            <div class="daysLeft">Days to live: <span id="daysLeftNumber"></span></div>
-            <div class="weeksLeft">Weeks to live: <span id="weeksLeftNumber"></span></div>
-            <div class="yearsLeft">Years to live: <span id="yearsLeftNumber"></span></div>
+            <div class="daysLeft"><span class="label">&nbsp;Days to live:</span> <span class="number" id="daysLeftNumber"></span></div>
+            <div class="weeksLeft"><span class="label">Weeks to live:</span> <span class="number" id="weeksLeftNumber"></span></div>
+            <div class="yearsLeft"><span class="label">Years to live:</span> <span class="number" id="yearsLeftNumber"></span></div>
         </div>
 
         <p>* other lives not included</p>
