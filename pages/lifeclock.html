@@ -1,11 +1,89 @@
 <html>
     <head>
         <title>Daniel Dornhardt's Life Clock</title>
+
+        <script type="text/javascript">
+
+            /**
+             * This "reverse clock" should be a "memento mori" / "memento vita" which I can
+             * then put on my ol' kindle to have a nice view of how much time I have to _do_ and _enjoy_
+             * stuff!
+             *
+             * For that I wanna display the following things:
+             *
+             * - Years left to live
+             * - Weeks left to live
+             * - Days left to live
+             * - Hours left to live (?)
+             *
+             * - optional: a little clock?
+             *
+             * also: a way to spin the page 90 degrees to make it work in my kindle when lying on the side!
+             */
+
+            // gather some basic info
+            const assumeYearsAlive = 80
+            const dateOfBirthStr = '1979-07-30'
+
+            // crunch some constant numbers
+            const dateOfBirth = new Date(dateOfBirthStr)
+
+            // calculate year of death
+            const yearOfDeathFullYear = dateOfBirth.getFullYear() + assumeYearsAlive
+            const dateOfDeath = new Date(dateOfBirth)
+            dateOfDeath.setFullYear(yearOfDeathFullYear)
+
+            console.log(dateOfDeath)
+
+            // update time left in regular intervals to keep the clock a-tickin'!
+
+            const updateCalculationsAndScreen = () => {
+                const now = new Date()
+                const timeLeftMs = dateOfDeath - now
+                const secondsLeft = Math.round(timeLeftMs / 1000)
+                const minutesLeft = Math.round(secondsLeft / 60)
+                const hoursLeft = Math.round(minutesLeft / 60)
+                const daysLeft = Math.round(hoursLeft / 24)
+                const weeksLeft = Math.round(daysLeft / 7)
+                const yearsLeft = yearOfDeathFullYear - now.getFullYear()
+
+                console.log({
+                    timeLeftMs,
+                    secondsLeft,
+                    minutesLeft,
+                    hoursLeft,
+                    daysLeft,
+                    weeksLeft,
+                    yearsLeft
+                })
+
+                const daysLeftElement = document.getElementById('daysLeftNumber')
+                const weeksLeftElement = document.getElementById('weeksLeftNumber')
+                const yearsLeftElement = document.getElementById('yearsLeftNumber')
+
+                daysLeftElement.innerText = daysLeft
+                weeksLeftElement.innerText = weeksLeft
+                yearsLeftElement.innerText = yearsLeft
+            }
+
+            window.onload = (event) => {
+                setInterval(updateCalculationsAndScreen, 1000)
+                updateCalculationsAndScreen()
+            }
+        </script>
+
+
     </head>
     <body>
         <p>What do I still want to, and how much time do I have for that?*</p>
 
         <h2>Time Left: ~2000 Weeks?</h2>
+
+        <div class="dateHolders">
+            <div class="daysLeft">Days to live: <span id="daysLeftNumber"></span></div>
+            <div class="weeksLeft">Weeks to live: <span id="weeksLeftNumber"></span></div>
+            <div class="yearsLeft">Years to live: <span id="yearsLeftNumber"></span></div>
+        </div>
 
         <p>* other lives not included</p>
     </body>
